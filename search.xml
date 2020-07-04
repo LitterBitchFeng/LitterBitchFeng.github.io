@@ -106,4 +106,15 @@
 </tbody></table>
 ]]></content>
   </entry>
+  <entry>
+    <title>初识SpringBoot</title>
+    <url>/2020/07/04/%E5%88%9D%E6%97%B6SpringBoot/</url>
+    <content><![CDATA[<p>搭建我的第一个Spring Boot项目</p>
+<a id="more"></a>
+<h1 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h1><h2 id="使用命令创建Maven"><a href="#使用命令创建Maven" class="headerlink" title="使用命令创建Maven"></a>使用命令创建Maven</h2><p>在cmd窗口中执行以下命令：<br>mvn archetype:generate -DgroupId=org.sang -DartifactId=&lt;项目名称&gt;<br>-DarchetypeArtifactId =maven-archetype-quickstart -DinteractiveMode=false<br>命令解释：<br>• -Dgroupld 组织 Id （项目包名）。<br>• -Dartifactld Artifactld （项目名称或者模块名称）．<br>• -DarchetypeArtifactld 项目骨架。<br>• -DinteractiveMode 是否使用 交互模式<br>使用命令将项目创建好之后,直接用 Eclipse 或者 IntelliJ IDEA 打开即可。</p>
+<h2 id="使用IDEA创建Maven"><a href="#使用IDEA创建Maven" class="headerlink" title="使用IDEA创建Maven"></a>使用IDEA创建Maven</h2><p>1.创建项目时选择Maven，可以不选择项目骨架,单击Next<br>2.输入组织名称、模块名称、项目版本号等信息<br>3.选择项目位置,然后单机Finish按钮，完成项目搭建</p>
+<h1 id="项目构建"><a href="#项目构建" class="headerlink" title="项目构建"></a>项目构建</h1><h2 id="添加侬赖"><a href="#添加侬赖" class="headerlink" title="添加侬赖"></a>添加侬赖</h2><p>首先添加 spring-boot-starter-parent 作为 parent， 代码如下：<br>&lt;parent&gt;<br>&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;<br>&lt;artifactid&gt;spring-boot-starter-parent&lt;/artifactid&gt;<br>&lt;version&gt;2.0.4.RELEASE&lt;/version&gt;<br>&lt;/parent&gt;<br>spring-boot-starter-parent是一个特殊的 Starter,提供了一些 Maven 的默认配置,同时还提供了 dependency-management,可以便开发者在引入其他依赖时不必输入版本号,方便依赖管理。 Spring Boot 中提供的 Starter 非常多，这些 Starter 主要为第三方库提供自动配置，例如要开发一个 Web 项目，就可以先引入一个 Web 的 Starter，代码如下：<br>&lt;dependencies&gt;<br>&lt;dependency&gt;<br>&lt;groupid&gt;org.springframework.boot&lt;/groupid&gt;<br>&lt;artifactid&gt;spring-boot-starter-web&lt;/artifactid&gt;<br>&lt;/dependency&gt;<br>&lt;/dependencies&gt;</p>
+<h2 id="编写启动类"><a href="#编写启动类" class="headerlink" title="编写启动类"></a>编写启动类</h2><p>接下来创建项目的入口类，在 Maven 工程的 java 目录下创建项目的包，包里创建一个 App 类， 代码如下：<br>@EnableAutoConfiguration<br>   public class App {<br>       public static void main (String [] args) {<br>    SpringApplication.run (App.class, args);<br>  }<br>}</p>
+]]></content>
+  </entry>
 </search>
