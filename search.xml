@@ -133,4 +133,22 @@
         <tag>Eclipse</tag>
       </tags>
   </entry>
+  <entry>
+    <title>SpringBoot基础</title>
+    <url>/2020/07/05/SpringBoot%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<p>SpringBoot基础</p>
+<a id="more"></a>
+<h1 id="了解SpringBoot"><a href="#了解SpringBoot" class="headerlink" title="了解SpringBoot"></a><strong><em>了解SpringBoot</em></strong></h1><h2 id="了解SpringBoot项目结构"><a href="#了解SpringBoot项目结构" class="headerlink" title="了解SpringBoot项目结构"></a>了解SpringBoot项目结构</h2><h2 id="了解SpringBoot的入口类"><a href="#了解SpringBoot的入口类" class="headerlink" title="了解SpringBoot的入口类"></a>了解SpringBoot的入口类</h2><h2 id="了解SpringBoot的自动配置"><a href="#了解SpringBoot的自动配置" class="headerlink" title="了解SpringBoot的自动配置"></a>了解SpringBoot的自动配置</h2><h2 id="了解SpringBoot的热部署"><a href="#了解SpringBoot的热部署" class="headerlink" title="了解SpringBoot的热部署"></a>了解SpringBoot的热部署</h2><h2 id="定制启动画面"><a href="#定制启动画面" class="headerlink" title="定制启动画面"></a>定制启动画面</h2><p>————————————</p>
+<h1 id="SpringBoot的常用注解"><a href="#SpringBoot的常用注解" class="headerlink" title="SpringBoot的常用注解"></a><strong><em>SpringBoot的常用注解</em></strong></h1><h2 id="什么是注解式编程"><a href="#什么是注解式编程" class="headerlink" title="什么是注解式编程"></a>什么是注解式编程</h2><h2 id="了解系统注解"><a href="#了解系统注解" class="headerlink" title="了解系统注解"></a>了解系统注解</h2><h2 id="SpringBoot的常用注解-1"><a href="#SpringBoot的常用注解-1" class="headerlink" title="SpringBoot的常用注解"></a>SpringBoot的常用注解</h2><p>————————————</p>
+<h1 id="使用配置文件"><a href="#使用配置文件" class="headerlink" title="使用配置文件"></a><strong><em>使用配置文件</em></strong></h1><h2 id="演示如何使用application-yml文件"><a href="#演示如何使用application-yml文件" class="headerlink" title="演示如何使用application.yml文件"></a>演示如何使用application.yml文件</h2><h2 id="演示如何使用application-properties文件"><a href="#演示如何使用application-properties文件" class="headerlink" title="演示如何使用application.properties文件"></a>演示如何使用application.properties文件</h2><h2 id="用application-yml和application-properties配置多环境"><a href="#用application-yml和application-properties配置多环境" class="headerlink" title="用application.yml和application.properties配置多环境"></a>用application.yml和application.properties配置多环境</h2><p>————————————</p>
+<h1 id="SpringBoot的Starter"><a href="#SpringBoot的Starter" class="headerlink" title="SpringBoot的Starter"></a><strong><em>SpringBoot的Starter</em></strong></h1><h2 id="了解Starter"><a href="#了解Starter" class="headerlink" title="了解Starter"></a>了解Starter</h2><h2 id="使用Starter"><a href="#使用Starter" class="headerlink" title="使用Starter"></a>使用Starter</h2>]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+        <tag>SpringBoot</tag>
+        <tag>注解</tag>
+      </tags>
+  </entry>
 </search>
