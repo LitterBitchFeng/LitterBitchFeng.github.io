@@ -508,4 +508,49 @@
         <tag>Mybatis</tag>
       </tags>
   </entry>
+  <entry>
+    <title>整合SpringDataJPA</title>
+    <url>/2020/07/16/%E6%95%B4%E5%90%88SpringDataJPA/</url>
+    <content><![CDATA[<p>JPA</p>
+<a id="more"></a>]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot进阶</title>
+    <url>/2020/07/17/SpringBoot%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<p>SpringBoot的进阶</p>
+<a id="more"></a>
+<h1 id="自定义Starter"><a href="#自定义Starter" class="headerlink" title="自定义Starter"></a>自定义Starter</h1><p>&nbsp;&nbsp;如果SpringBoot自带的入口类不能满足要求,则可以自定义Starter.自定义Starter的步骤如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本次源代码在作者本地D盘下WorkSpace里的mystarter可以找到</span><br></pre></td></tr></table></figure>
+<p>1.创建项目<br>&nbsp;&nbsp;在创建项目是要确定artifactId值.Spring官方的Starter通常被命名为”spring-boot-starter-(名字)”,如”spring-boot-starter-web”.Spring官方建议非官方的Starter命名遵循”(名字)-spring-boot-starter的格式”,如”myxxxx-spring-boot-starter”.<br>2.引入必要的依赖</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-test&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>3.自定义Properties类<br>&nbsp;&nbsp;在使用Spring官方的Starter时,可以在application.properties文件中配置参数,以覆盖默认值.在自定义Starter时,也可以根据需要来配置Properties类,以保存配置信息,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;mystarter&quot;)</span><br><span class="line">public class MyStarterProperties &#123;</span><br><span class="line">    private String parameter;</span><br><span class="line"></span><br><span class="line">    public String getParameter() &#123;</span><br><span class="line">        return parameter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setParameter(String parameter) &#123;</span><br><span class="line">        this.parameter &#x3D; parameter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.定义核心服务类<br>&nbsp;&nbsp;每个Starter都需要有自己的功能,所以需要定义服务类,如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class MyStarter &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarterProperties myStarterProperties;</span><br><span class="line"></span><br><span class="line">    public MyStarter()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public  MyStarter(MyStarterProperties myStarterProperties)&#123;</span><br><span class="line">        this.myStarterProperties &#x3D; myStarterProperties;</span><br><span class="line">    &#125;</span><br><span class="line">    public String print()&#123;</span><br><span class="line">        System.out.println(&quot;参数:&quot;+myStarterProperties.getParameter());</span><br><span class="line">        String s &#x3D; myStarterProperties.getParameter();</span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.定义自动配置类<br>&nbsp;&nbsp;每个Starter一般至少有一个自动配置类,命名规则为”名字+AutoConfiguration”,如”MyStarterServiceAutoConfiguration”.配置方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableConfigurationProperties(MyStarterProperties.class)</span><br><span class="line">@ConditionalOnClass(MyStarter.class)</span><br><span class="line">@ConditionalOnProperty(prefix &#x3D; &quot;mystarter&quot;,value &#x3D; &quot;enable&quot;,matchIfMissing &#x3D; true)</span><br><span class="line">public class MyStarterServiceAutoConfiguration &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarterProperties myStarterProperties;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @ConditionalOnMissingBean(MyStarter.class)</span><br><span class="line">    public MyStarter MyStarterService()&#123;</span><br><span class="line">        MyStarter myStarter &#x3D; new MyStarter(myStarterProperties);</span><br><span class="line">        return myStarter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;最后,在resources文件夹下新建目录META-INF,在目录中新建spring.factories文件,并且在spring.factories中配置AutoConfiguration,加入以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration&#x3D;org.example.MyStarterServiceAutoConfiguration</span><br></pre></td></tr></table></figure>
+<p>org.example为项目名,具体按照实际代码<br>6.打包发布<br>&nbsp;&nbsp;在完成上面的配置后,打包生成JAR文件,然后就可以像使用官方Starter那样使用了.如果不发布到Maven中心仓库,则需要用户手动添加依赖.<br>7.创建用于测试Starter的项目<br>&nbsp;&nbsp;在创建新项目后,如果要添加自定义的Starter依赖,则不能用添加官方Starter的方法,因为此时还未将Starter发布到Maven中心仓库,只能通过开发工具导入此依赖JAR文件(在IDEA中,通过单击菜单栏的”FILE→ProjectStructure→Modules→Dependencies”,然后单机”+”号,选择”JARs or directories…”选项添加依赖).<br>&nbsp;&nbsp;然后,配置application.properties文件,加入以下参数:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mystarter.parameter&#x3D;admin</span><br></pre></td></tr></table></figure>
+<p>8.使用Starter<br>&nbsp;&nbsp;在需要使用的地方注入依赖即可,具体使用见以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">@SpringBootTest(classes &#x3D; App.class)</span><br><span class="line">public class AppTest </span><br><span class="line">&#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarter myStarter;</span><br><span class="line">    @Test</span><br><span class="line">    public void shouldAnswerWithTrue()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(myStarter.print());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;运行上面的单元测试,则输出以下结果:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参数:admin</span><br><span class="line">admin</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>配置</tag>
+        <tag>注解</tag>
+      </tags>
+  </entry>
 </search>

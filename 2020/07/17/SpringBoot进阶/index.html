@@ -20,21 +20,22 @@
     var CONFIG = {"hostname":"litterbitchfeng.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="搭建我的第一个Spring Boot项目">
+  <meta name="description" content="SpringBoot的进阶">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初识SpringBoot">
-<meta property="og:url" content="https://litterbitchfeng.github.io/2020/07/04/%E5%88%9D%E6%97%B6SpringBoot/index.html">
+<meta property="og:title" content="SpringBoot进阶">
+<meta property="og:url" content="https://litterbitchfeng.github.io/2020/07/17/SpringBoot%E8%BF%9B%E9%98%B6/index.html">
 <meta property="og:site_name" content="键人冯小笔记">
-<meta property="og:description" content="搭建我的第一个Spring Boot项目">
+<meta property="og:description" content="SpringBoot的进阶">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-04T01:34:52.000Z">
-<meta property="article:modified_time" content="2020-07-06T03:00:11.708Z">
+<meta property="article:published_time" content="2020-07-17T00:12:54.000Z">
+<meta property="article:modified_time" content="2020-07-20T00:54:58.176Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="SpringBoot">
 <meta property="article:tag" content="配置">
-<meta property="article:tag" content="项目搭建">
+<meta property="article:tag" content="注解">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://litterbitchfeng.github.io/2020/07/04/%E5%88%9D%E6%97%B6SpringBoot/">
+<link rel="canonical" href="https://litterbitchfeng.github.io/2020/07/17/SpringBoot%E8%BF%9B%E9%98%B6/">
 
 
 <script id="page-configurations">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>初识SpringBoot | 键人冯小笔记</title>
+  <title>SpringBoot进阶 | 键人冯小笔记</title>
   
 
 
@@ -192,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://litterbitchfeng.github.io/2020/07/04/%E5%88%9D%E6%97%B6SpringBoot/">
+    <link itemprop="mainEntityOfPage" href="https://litterbitchfeng.github.io/2020/07/17/SpringBoot%E8%BF%9B%E9%98%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          初识SpringBoot
+          SpringBoot进阶
         </h1>
 
         <div class="post-meta">
@@ -215,14 +216,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-04 09:34:52" itemprop="dateCreated datePublished" datetime="2020-07-04T09:34:52+08:00">2020-07-04</time>
+              <time title="创建时间：2020-07-17 08:12:54" itemprop="dateCreated datePublished" datetime="2020-07-17T08:12:54+08:00">2020-07-17</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 11:00:11" itemprop="dateModified" datetime="2020-07-06T11:00:11+08:00">2020-07-06</time>
+                <time title="修改时间：2020-07-20 08:54:58" itemprop="dateModified" datetime="2020-07-20T08:54:58+08:00">2020-07-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,27 +246,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>搭建我的第一个Spring Boot项目</p>
+        <p>SpringBoot的进阶</p>
 <a id="more"></a>
-<h1 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a><strong><em>项目搭建</em></strong></h1><h2 id="使用命令创建Maven"><a href="#使用命令创建Maven" class="headerlink" title="使用命令创建Maven"></a>使用命令创建Maven</h2><p>在cmd窗口中执行以下命令：<br><code>mvn archetype:generate -DgroupId=org.sang -DartifactId=&lt;项目名称&gt;
--DarchetypeArtifactId =maven-archetype-quickstart -DinteractiveMode=false</code><br>命令解释：<br>• -Dgroupld 组织 Id （项目包名）。<br>• -Dartifactld Artifactld （项目名称或者模块名称）．<br>• -DarchetypeArtifactld 项目骨架。<br>• -DinteractiveMode 是否使用 交互模式<br>使用命令将项目创建好之后,直接用 Eclipse 或者 IntelliJ IDEA 打开即可。</p>
-<h2 id="使用IDEA创建Maven"><a href="#使用IDEA创建Maven" class="headerlink" title="使用IDEA创建Maven"></a>使用IDEA创建Maven</h2><p>1.创建项目时选择Maven，可以不选择项目骨架,单击Next<br>2.输入组织名称、模块名称、项目版本号等信息<br>3.选择项目位置,然后单机Finish按钮，完成项目搭建</p>
-<h1 id="项目构建"><a href="#项目构建" class="headerlink" title="项目构建"></a><strong><em>项目构建</em></strong></h1><h2 id="添加侬赖"><a href="#添加侬赖" class="headerlink" title="添加侬赖"></a>添加侬赖</h2><p>首先添加 spring-boot-starter-parent 作为 parent， 代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt; </span><br><span class="line">	&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">	&lt;artifactid&gt;spring-boot-starter-parent&lt;&#x2F;artifactid&gt;</span><br><span class="line">	&lt;version&gt;2.0.4.RELEASE&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;parent&gt;</span><br></pre></td></tr></table></figure>
-<p>spring-boot-starter-parent是一个特殊的 Starter,提供了一些 Maven 的默认配置,同时还提供了 dependency-management,可以便开发者在引入其他依赖时不必输入版本号,方便依赖管理。 Spring Boot 中提供的 Starter 非常多，这些 Starter 主要为第三方库提供自动配置，例如要开发一个 Web 项目，就可以先引入一个 Web 的 Starter，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">	&lt;groupid&gt;org.springframework.boot&lt;&#x2F;groupid&gt;</span><br><span class="line">	&lt;artifactid&gt;spring-boot-starter-web&lt;&#x2F;artifactid&gt;</span><br><span class="line">   &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="编写启动类"><a href="#编写启动类" class="headerlink" title="编写启动类"></a>编写启动类</h2><p>接下来创建项目的入口类，在 Maven 工程的 java 目录下创建项目的包，包里创建一个 App 类， 代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@EnableAutoConfiguration </span><br><span class="line">   public class App &#123; </span><br><span class="line">       public static void main (String [] args) &#123; </span><br><span class="line">	SpringApplication.run (App.class, args); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>代码解释：<br>•@EnableAutoConfiguration 注解表示开启自动化配直。 由于项目中添加了 spring-boot-starterweb 依赖， 因此在开启了自动化配置之后会自动进行 Spring 和 SpringMVC 的配置。<br>•在 Java 项目的 main 方法中，通过 SpringApplication 中的 m 方法启动项目 。 第一个参数传入 App.class，告诉 Spring 哪个是主要组件。第二个参数是运行时输入的其他参数。<br>接下来创建一个 SpringMVC 中的控制器一－HelloController，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@RestController public class HelloController &#123; </span><br><span class="line">	@GetMapping (&quot;&#x2F;hello&quot;) </span><br><span class="line">	public String hello () &#123; </span><br><span class="line">	return &quot;hello spring boot !&quot;; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在控制器中提供了一个“／hello”接口，此时需要配置包扫描才能将 HelloController注册到 Spring MVC 容器中，因此在 App 类上面再添加一个注解＠ComponentScan 进行包扫描，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@EnableAutoConfiguration</span><br><span class="line">@ComponentScan</span><br><span class="line">public class App&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">	        SpringApplication.run(App.class,args):</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>也可以直接使用组合注解＠Spring BootApplication 来代替＠EnableAutoConfiguration 和 @ComponentScan， 代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">public class App&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">	        SpringApplication.run(App.class,args):</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="项目启动"><a href="#项目启动" class="headerlink" title="项目启动"></a>项目启动</h1><p>启动项目有三种不同的方式<br>1.使用Maven命令启动<br>可以直接使用 mvn 命令启动项目，命令如下：<br><code>mvn spring-boot:run</code><br>启动成功后，在浏览器地址栏输入“localhost:8080/hello”即可看到运行结果<br>2.直接运行main方法<br>直接在 IDE 中运行 App 类的 main 方法，就可以看到项目启动了<br>启动成功后，也可以在浏览器中直接访问／hello 接口。<br>3.打包启动<br>当然， Spring Boot 应用也可以直接打成jar 包运行。在生产环境中，也可以通过这样的方式来 运行一个 Spring Boot 应用。要将 Spring Boot 打成 jar 包运行，首先需要添加一个 plugin 到 pom.xml 文件中，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;build&gt; </span><br><span class="line">&lt;plugins&gt; </span><br><span class="line">&lt;plugin&gt; </span><br><span class="line">&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt; </span><br><span class="line">&lt;artifactId&gt;spring-boot-maven-plugin&lt;&#x2F;artifactId&gt; </span><br><span class="line">&lt;&#x2F;plugin&gt; </span><br><span class="line">&lt;&#x2F;plugins&gt; </span><br><span class="line">&lt;&#x2F;build&gt;</span><br></pre></td></tr></table></figure>
-<p>然后运行 mvn 命令进行打包，代码如下：<br><code>mvn package</code><br>打包完成后，在项目的 target 目录下会生成一个 jar 文件，通过<code>java -jar</code> 命令直接启动这个 jar 文件.</p>
-
+<h1 id="自定义Starter"><a href="#自定义Starter" class="headerlink" title="自定义Starter"></a>自定义Starter</h1><p>&nbsp;&nbsp;如果SpringBoot自带的入口类不能满足要求,则可以自定义Starter.自定义Starter的步骤如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本次源代码在作者本地D盘下WorkSpace里的mystarter可以找到</span><br></pre></td></tr></table></figure>
+<p>1.创建项目<br>&nbsp;&nbsp;在创建项目是要确定artifactId值.Spring官方的Starter通常被命名为”spring-boot-starter-(名字)”,如”spring-boot-starter-web”.Spring官方建议非官方的Starter命名遵循”(名字)-spring-boot-starter的格式”,如”myxxxx-spring-boot-starter”.<br>2.引入必要的依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-test&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>3.自定义Properties类<br>&nbsp;&nbsp;在使用Spring官方的Starter时,可以在application.properties文件中配置参数,以覆盖默认值.在自定义Starter时,也可以根据需要来配置Properties类,以保存配置信息,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;mystarter&quot;)</span><br><span class="line">public class MyStarterProperties &#123;</span><br><span class="line">    private String parameter;</span><br><span class="line"></span><br><span class="line">    public String getParameter() &#123;</span><br><span class="line">        return parameter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setParameter(String parameter) &#123;</span><br><span class="line">        this.parameter &#x3D; parameter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.定义核心服务类<br>&nbsp;&nbsp;每个Starter都需要有自己的功能,所以需要定义服务类,如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class MyStarter &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarterProperties myStarterProperties;</span><br><span class="line"></span><br><span class="line">    public MyStarter()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public  MyStarter(MyStarterProperties myStarterProperties)&#123;</span><br><span class="line">        this.myStarterProperties &#x3D; myStarterProperties;</span><br><span class="line">    &#125;</span><br><span class="line">    public String print()&#123;</span><br><span class="line">        System.out.println(&quot;参数:&quot;+myStarterProperties.getParameter());</span><br><span class="line">        String s &#x3D; myStarterProperties.getParameter();</span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.定义自动配置类<br>&nbsp;&nbsp;每个Starter一般至少有一个自动配置类,命名规则为”名字+AutoConfiguration”,如”MyStarterServiceAutoConfiguration”.配置方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableConfigurationProperties(MyStarterProperties.class)</span><br><span class="line">@ConditionalOnClass(MyStarter.class)</span><br><span class="line">@ConditionalOnProperty(prefix &#x3D; &quot;mystarter&quot;,value &#x3D; &quot;enable&quot;,matchIfMissing &#x3D; true)</span><br><span class="line">public class MyStarterServiceAutoConfiguration &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarterProperties myStarterProperties;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @ConditionalOnMissingBean(MyStarter.class)</span><br><span class="line">    public MyStarter MyStarterService()&#123;</span><br><span class="line">        MyStarter myStarter &#x3D; new MyStarter(myStarterProperties);</span><br><span class="line">        return myStarter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;最后,在resources文件夹下新建目录META-INF,在目录中新建spring.factories文件,并且在spring.factories中配置AutoConfiguration,加入以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration&#x3D;org.example.MyStarterServiceAutoConfiguration</span><br></pre></td></tr></table></figure>
+<p>org.example为项目名,具体按照实际代码<br>6.打包发布<br>&nbsp;&nbsp;在完成上面的配置后,打包生成JAR文件,然后就可以像使用官方Starter那样使用了.如果不发布到Maven中心仓库,则需要用户手动添加依赖.<br>7.创建用于测试Starter的项目<br>&nbsp;&nbsp;在创建新项目后,如果要添加自定义的Starter依赖,则不能用添加官方Starter的方法,因为此时还未将Starter发布到Maven中心仓库,只能通过开发工具导入此依赖JAR文件(在IDEA中,通过单击菜单栏的”FILE→ProjectStructure→Modules→Dependencies”,然后单机”+”号,选择”JARs or directories…”选项添加依赖).<br>&nbsp;&nbsp;然后,配置application.properties文件,加入以下参数:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mystarter.parameter&#x3D;admin</span><br></pre></td></tr></table></figure>
+<p>8.使用Starter<br>&nbsp;&nbsp;在需要使用的地方注入依赖即可,具体使用见以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">@SpringBootTest(classes &#x3D; App.class)</span><br><span class="line">public class AppTest </span><br><span class="line">&#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarter myStarter;</span><br><span class="line">    @Test</span><br><span class="line">    public void shouldAnswerWithTrue()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(myStarter.print());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;运行上面的单元测试,则输出以下结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">参数:admin</span><br><span class="line">admin</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -274,8 +274,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
               <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
-              <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" rel="tag"># 项目搭建</a>
+              <a href="/tags/%E6%B3%A8%E8%A7%A3/" rel="tag"># 注解</a>
           </div>
 
         
@@ -284,13 +285,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/04/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="prev" title="IDEA和Eclipse中常用的快捷键">
-      <i class="fa fa-chevron-left"></i> IDEA和Eclipse中常用的快捷键
+    <a href="/2020/07/16/%E6%95%B4%E5%90%88SpringDataJPA/" rel="prev" title="整合SpringDataJPA">
+      <i class="fa fa-chevron-left"></i> 整合SpringDataJPA
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/05/SpringBoot%E5%9F%BA%E7%A1%80/" rel="next" title="SpringBoot基础">
-      SpringBoot基础 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -349,7 +347,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目搭建"><span class="nav-number">1.</span> <span class="nav-text">项目搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用命令创建Maven"><span class="nav-number">1.1.</span> <span class="nav-text">使用命令创建Maven</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用IDEA创建Maven"><span class="nav-number">1.2.</span> <span class="nav-text">使用IDEA创建Maven</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目构建"><span class="nav-number">2.</span> <span class="nav-text">项目构建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加侬赖"><span class="nav-number">2.1.</span> <span class="nav-text">添加侬赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写启动类"><span class="nav-number">2.2.</span> <span class="nav-text">编写启动类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目启动"><span class="nav-number">3.</span> <span class="nav-text">项目启动</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义Starter"><span class="nav-number">1.</span> <span class="nav-text">自定义Starter</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
