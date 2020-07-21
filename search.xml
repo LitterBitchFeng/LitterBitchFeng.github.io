@@ -1,117 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>IDEA和Eclipse中常用的快捷键</title>
-    <url>/2020/07/04/%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<p>Idea中的常用快捷键</p>
+    <title>SpringBoot进阶</title>
+    <url>/2020/07/17/SpringBoot%E8%BF%9B%E9%98%B6/</url>
+    <content><![CDATA[<p>SpringBoot的进阶</p>
 <a id="more"></a>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>IDEA快捷键</th>
-<th>Eclipse快捷键</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>自动代码补全</td>
-<td>Basic模式:Ctrl+空格<br/>智能模式:Ctrl+Shift+空格</td>
-<td>Alt+/</td>
-</tr>
-<tr>
-<td>自动代码生成</td>
-<td>Alt+Insert</td>
-<td></td>
-</tr>
-<tr>
-<td>搜索类</td>
-<td>Ctrl+N</td>
-<td>Ctrl+Shift+T</td>
-</tr>
-<tr>
-<td>删除当前行</td>
-<td>Ctrl+X</td>
-<td>Ctrl+D</td>
-</tr>
-<tr>
-<td>跟进代码和方法</td>
-<td>Ctrl+B</td>
-<td>F3</td>
-</tr>
-<tr>
-<td>查看继承及重写</td>
-<td>Ctrl+Shift+B</td>
-<td></td>
-</tr>
-<tr>
-<td>代码模板</td>
-<td>Ctrl+J</td>
-<td></td>
-</tr>
-<tr>
-<td>最近编辑文件</td>
-<td>Ctrl+E</td>
-<td></td>
-</tr>
-<tr>
-<td>提示方法参数</td>
-<td>Ctrl+P</td>
-<td></td>
-</tr>
-<tr>
-<td>跳转最近编辑内容</td>
-<td>Ctrl+Shift+Backspace</td>
-<td>Alt+左右箭头</td>
-</tr>
-<tr>
-<td>查看方法、类说明</td>
-<td>Ctrl+Q</td>
-<td></td>
-</tr>
-<tr>
-<td>搜索文件</td>
-<td>Ctrl+Shift+N</td>
-<td>Ctrl+Shift+T</td>
-</tr>
-<tr>
-<td>覆盖父类方法</td>
-<td>Ctrl+O</td>
-<td></td>
-</tr>
-<tr>
-<td>方法调用</td>
-<td>Ctrl+Alt+H</td>
-<td>Ctrl+Alt+H</td>
-</tr>
-<tr>
-<td>格式化代码</td>
-<td>Ctrl+Alt+L</td>
-<td>Ctrl+Shift+F</td>
-</tr>
-<tr>
-<td>整理import</td>
-<td>Ctrl+Alt+O</td>
-<td>Ctrl+Shift+O</td>
-</tr>
-<tr>
-<td>快速修复错误</td>
-<td>Alt+Enter</td>
-<td>Ctrl+1</td>
-</tr>
-<tr>
-<td>切换窗口</td>
-<td>Ctrl+Tab</td>
-<td></td>
-</tr>
-</tbody></table>
-]]></content>
+<h1 id="自定义Starter"><a href="#自定义Starter" class="headerlink" title="自定义Starter"></a>自定义Starter</h1><p>&nbsp;&nbsp;如果SpringBoot自带的入口类不能满足要求,则可以自定义Starter.自定义Starter的步骤如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本次源代码在作者本地D盘下WorkSpace里的mystarter可以找到</span><br></pre></td></tr></table></figure>
+<p>1.创建项目<br>&nbsp;&nbsp;在创建项目是要确定artifactId值.Spring官方的Starter通常被命名为”spring-boot-starter-(名字)”,如”spring-boot-starter-web”.Spring官方建议非官方的Starter命名遵循”(名字)-spring-boot-starter的格式”,如”myxxxx-spring-boot-starter”.<br>2.引入必要的依赖</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-test&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>3.自定义Properties类<br>&nbsp;&nbsp;在使用Spring官方的Starter时,可以在application.properties文件中配置参数,以覆盖默认值.在自定义Starter时,也可以根据需要来配置Properties类,以保存配置信息,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;mystarter&quot;)</span><br><span class="line">public class MyStarterProperties &#123;</span><br><span class="line">    private String parameter;</span><br><span class="line"></span><br><span class="line">    public String getParameter() &#123;</span><br><span class="line">        return parameter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setParameter(String parameter) &#123;</span><br><span class="line">        this.parameter &#x3D; parameter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.定义核心服务类<br>&nbsp;&nbsp;每个Starter都需要有自己的功能,所以需要定义服务类,如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class MyStarter &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarterProperties myStarterProperties;</span><br><span class="line"></span><br><span class="line">    public MyStarter()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public  MyStarter(MyStarterProperties myStarterProperties)&#123;</span><br><span class="line">        this.myStarterProperties &#x3D; myStarterProperties;</span><br><span class="line">    &#125;</span><br><span class="line">    public String print()&#123;</span><br><span class="line">        System.out.println(&quot;参数:&quot;+myStarterProperties.getParameter());</span><br><span class="line">        String s &#x3D; myStarterProperties.getParameter();</span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.定义自动配置类<br>&nbsp;&nbsp;每个Starter一般至少有一个自动配置类,命名规则为”名字+AutoConfiguration”,如”MyStarterServiceAutoConfiguration”.配置方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableConfigurationProperties(MyStarterProperties.class)</span><br><span class="line">@ConditionalOnClass(MyStarter.class)</span><br><span class="line">@ConditionalOnProperty(prefix &#x3D; &quot;mystarter&quot;,value &#x3D; &quot;enable&quot;,matchIfMissing &#x3D; true)</span><br><span class="line">public class MyStarterServiceAutoConfiguration &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarterProperties myStarterProperties;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @ConditionalOnMissingBean(MyStarter.class)</span><br><span class="line">    public MyStarter MyStarterService()&#123;</span><br><span class="line">        MyStarter myStarter &#x3D; new MyStarter(myStarterProperties);</span><br><span class="line">        return myStarter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;最后,在resources文件夹下新建目录META-INF,在目录中新建spring.factories文件,并且在spring.factories中配置AutoConfiguration,加入以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration&#x3D;org.example.MyStarterServiceAutoConfiguration</span><br></pre></td></tr></table></figure>
+<p>org.example为项目名,具体按照实际代码<br>6.打包发布<br>&nbsp;&nbsp;在完成上面的配置后,打包生成JAR文件,然后就可以像使用官方Starter那样使用了.如果不发布到Maven中心仓库,则需要用户手动添加依赖.<br>7.创建用于测试Starter的项目<br>&nbsp;&nbsp;在创建新项目后,如果要添加自定义的Starter依赖,则不能用添加官方Starter的方法,因为此时还未将Starter发布到Maven中心仓库,只能通过开发工具导入此依赖JAR文件(在IDEA中,通过单击菜单栏的”FILE→ProjectStructure→Modules→Dependencies”,然后单机”+”号,选择”JARs or directories…”选项添加依赖).<br>&nbsp;&nbsp;然后,配置application.properties文件,加入以下参数:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mystarter.parameter&#x3D;admin</span><br></pre></td></tr></table></figure>
+<p>8.使用Starter<br>&nbsp;&nbsp;在需要使用的地方注入依赖即可,具体使用见以下代码:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">@SpringBootTest(classes &#x3D; App.class)</span><br><span class="line">public class AppTest </span><br><span class="line">&#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarter myStarter;</span><br><span class="line">    @Test</span><br><span class="line">    public void shouldAnswerWithTrue()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(myStarter.print());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;运行上面的单元测试,则输出以下结果:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参数:admin</span><br><span class="line">admin</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>SpringBoot</category>
       </categories>
       <tags>
-        <tag>快捷键</tag>
-        <tag>IDE</tag>
-        <tag>Eclipse</tag>
+        <tag>SpringBoot</tag>
+        <tag>配置</tag>
+        <tag>注解</tag>
       </tags>
   </entry>
   <entry>
@@ -328,6 +246,120 @@
       </tags>
   </entry>
   <entry>
+    <title>IDEA和Eclipse中常用的快捷键</title>
+    <url>/2020/07/04/%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<p>Idea中的常用快捷键</p>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>IDEA快捷键</th>
+<th>Eclipse快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自动代码补全</td>
+<td>Basic模式:Ctrl+空格<br/>智能模式:Ctrl+Shift+空格</td>
+<td>Alt+/</td>
+</tr>
+<tr>
+<td>自动代码生成</td>
+<td>Alt+Insert</td>
+<td></td>
+</tr>
+<tr>
+<td>搜索类</td>
+<td>Ctrl+N</td>
+<td>Ctrl+Shift+T</td>
+</tr>
+<tr>
+<td>删除当前行</td>
+<td>Ctrl+X</td>
+<td>Ctrl+D</td>
+</tr>
+<tr>
+<td>跟进代码和方法</td>
+<td>Ctrl+B</td>
+<td>F3</td>
+</tr>
+<tr>
+<td>查看继承及重写</td>
+<td>Ctrl+Shift+B</td>
+<td></td>
+</tr>
+<tr>
+<td>代码模板</td>
+<td>Ctrl+J</td>
+<td></td>
+</tr>
+<tr>
+<td>最近编辑文件</td>
+<td>Ctrl+E</td>
+<td></td>
+</tr>
+<tr>
+<td>提示方法参数</td>
+<td>Ctrl+P</td>
+<td></td>
+</tr>
+<tr>
+<td>跳转最近编辑内容</td>
+<td>Ctrl+Shift+Backspace</td>
+<td>Alt+左右箭头</td>
+</tr>
+<tr>
+<td>查看方法、类说明</td>
+<td>Ctrl+Q</td>
+<td></td>
+</tr>
+<tr>
+<td>搜索文件</td>
+<td>Ctrl+Shift+N</td>
+<td>Ctrl+Shift+T</td>
+</tr>
+<tr>
+<td>覆盖父类方法</td>
+<td>Ctrl+O</td>
+<td></td>
+</tr>
+<tr>
+<td>方法调用</td>
+<td>Ctrl+Alt+H</td>
+<td>Ctrl+Alt+H</td>
+</tr>
+<tr>
+<td>格式化代码</td>
+<td>Ctrl+Alt+L</td>
+<td>Ctrl+Shift+F</td>
+</tr>
+<tr>
+<td>整理import</td>
+<td>Ctrl+Alt+O</td>
+<td>Ctrl+Shift+O</td>
+</tr>
+<tr>
+<td>快速修复错误</td>
+<td>Alt+Enter</td>
+<td>Ctrl+1</td>
+</tr>
+<tr>
+<td>切换窗口</td>
+<td>Ctrl+Tab</td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>快捷键</tag>
+        <tag>IDE</tag>
+        <tag>Eclipse</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>初识SpringBoot</title>
     <url>/2020/07/04/%E5%88%9D%E6%97%B6SpringBoot/</url>
     <content><![CDATA[<p>搭建我的第一个Spring Boot项目</p>
@@ -357,6 +389,61 @@
       <tags>
         <tag>配置</tag>
         <tag>项目搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>整合SpringDataJPA</title>
+    <url>/2020/07/16/%E6%95%B4%E5%90%88SpringDataJPA/</url>
+    <content><![CDATA[<p>JPA</p>
+<a id="more"></a>
+<p>1.导入依赖<br>&nbsp;&nbsp;创建SpringBoot项目,添加MySql和SpringData JPA的依赖,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;5.1.1&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;druid&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.1.9&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>2.数据库配置<br>&nbsp;&nbsp;在application.yml中配置数据库基本信息以及JPA相关配置:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">datasource:</span><br><span class="line">  type: com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">  driver-class-name: com.mysql.jdbc.Driver</span><br><span class="line">  url: jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;itrip?useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&amp;serverTimezone&#x3D;UTC&amp;useSSL&#x3D;true</span><br><span class="line">  username: root</span><br><span class="line">  password:</span><br><span class="line">jpa:</span><br><span class="line">  show-sql: true</span><br><span class="line">  database: mysql</span><br><span class="line">  hibernate:</span><br><span class="line">    ddl-auto: update</span><br><span class="line">  properties:</span><br><span class="line">    hibernate:</span><br><span class="line">      dialect: org.hibernate.dialect.MySQL57Dialect</span><br></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;这里的配置信息主要分为两大类.第1<del>6行时数据库基本信息配置,第7</del>14行时JPA相关配置.其中,第8行表示JPA对应的数据库是MySQL,第11行表示在项目启动时根据实体类更新数据库中的表(其他可选值有create、create-drop、validate、no),第14行则表示使用的数据库方言时MySQL57Dialect.<br>3.创建实体类<br>&nbsp;&nbsp;创建Book实体类,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Entity(name &#x3D; &quot;book&quot;)&#x2F;&#x2F;表示该类是一个实体类,在项目启动时会根据该类自动生成一张表,表的名称即@Entity注解中name的值,如果不配置name,默认表名为类名.</span><br><span class="line">@Data</span><br><span class="line">public class koob &#123;</span><br><span class="line">    @Id&#x2F;&#x2F;所有的实体类都要有主键,@Id注解表示该属性是一个主键</span><br><span class="line">    @GeneratedValue(strategy &#x3D; GenerationType.IDENTITY)&#x2F;&#x2F;@GenerateValue注解表示主键自动生成,strategy则表示主键的生成策略.</span><br><span class="line">    private Integer id;</span><br><span class="line">    @Column(name &#x3D; &quot;book_name&quot;,nullable &#x3D; false)&#x2F;&#x2F;默认情况下,生成的表中字段的名称就是实体类中属性的名称.通过@Column注解可以定制生成的字段的属性,name表示该属性对应的数据表中字段的名称,nullable表示该字段非空.</span><br><span class="line">    private String name;</span><br><span class="line">    private String author;</span><br><span class="line">    private Float price;</span><br><span class="line"></span><br><span class="line">    @Transient&#x2F;&#x2F;该注解表示在生成数据库中的表时,该属性被忽略,即不生成对应的字段.</span><br><span class="line">    private String description;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.创建BookDao接口<br>&nbsp;&nbsp;创建BookDao接口,继承JpaRepository,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Repository</span><br><span class="line">public interface KoobDao extends JpaRepository&lt;koob,Integer&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5.创建BookService<br>&nbsp;&nbsp;创建BookService,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class KoobService &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private KoobDao koobDao;</span><br><span class="line">    public void addBook(koob koob)&#123;</span><br><span class="line">        koobDao.save(koob);</span><br><span class="line">    &#125;</span><br><span class="line">    public void delBook(Integer id)&#123;</span><br><span class="line">        koobDao.deleteById(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.创建BookController<br>&nbsp;&nbsp;创建BookController,实现对数据的测试:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class KoobController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private KoobService koobService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value &#x3D; &quot;&#x2F;findAll&quot;)</span><br><span class="line">    public ModelAndView findAll()&#123;</span><br><span class="line">        ModelAndView m &#x3D; new ModelAndView();</span><br><span class="line">        koob k &#x3D; new koob();</span><br><span class="line">        k.setAuthor(&quot;冯世昊&quot;);</span><br><span class="line">        k.setName(&quot;爬1&quot;);</span><br><span class="line">        k.setPrice(12f);</span><br><span class="line">        koobService.addBook(k);</span><br><span class="line">        m.setViewName(&quot;boook&quot;);</span><br><span class="line">        return m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>8.测试<br>&nbsp;&nbsp;访问 “<a href="http://localhost:8080/boot2/findAll" target="_blank" rel="noopener">http://localhost:8080/boot2/findAll</a> “接口.</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring整合持久层技术</title>
+    <url>/2020/07/09/Spring%E6%95%B4%E5%90%88%E6%8C%81%E4%B9%85%E5%B1%82%E6%8A%80%E6%9C%AF/</url>
+    <content><![CDATA[<p>在springBoot中玩转MyBatis</p>
+<a id="more"></a>
+<p>1.创建项目<br>&nbsp;&nbsp;创建SpringBoot项目,添加MyBatis依赖、数据库驱动依赖以及数据库连接池依赖，代码如下:\</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.1.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;druid&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.9&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.1.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>2.创建数据库、表、实体类等<br>数据库和表、实体类以及application.propertie或application.yml中配置的数据库连接信息都与以前一致，如有疑惑，请翻阅之前博客。<br>3.创建数据库访问层(mapper)<br>创建userDao,代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Mapper</span><br><span class="line">public interface userDao &#123;</span><br><span class="line">    public List&lt;UserBean&gt; findAll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码解释:<br>•在springBoot启动类中加入注解@MapperScan(basePackages = “cn.dao”)扫描到mapper文件的具体所在包下<br>•@SpringBootApplication(scanBasePackages = {“cn.service”,”cn”})扫描service层<br>4.创建userDao-mapper.xml<br>在resources文件夹中创建mapper文件，写入mapper文件的映射文件(xml),代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot;</span><br><span class="line">        &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">&lt;mapper namespace&#x3D;&quot;cn.dao.userDao&quot;&gt;		&#x2F;&#x2F;指定mapper类所在包</span><br><span class="line">    &lt;select id&#x3D;&quot;findAll&quot; resultType&#x3D;&quot;cn.Entity.UserBean&quot;&gt;</span><br><span class="line">        select * from itrip_user</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
+<p>在application.yml中的配置信息如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">spring:</span><br><span class="line">  thymeleaf:</span><br><span class="line">    prefix: classpath:&#x2F;templates&#x2F;        &#x2F;&#x2F;指定前端页面所在包名</span><br><span class="line">    suffix: .html 		       &#x2F;&#x2F;指定后缀名</span><br><span class="line">  datasource:		       	</span><br><span class="line">    type: com.alibaba.druid.pool.DruidDataSource &#x2F;&#x2F;连接池配置</span><br><span class="line">    driver-class-name: com.mysql.jdbc.Driver         &#x2F;&#x2F;驱动</span><br><span class="line">    url: jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;itrip	           &#x2F;&#x2F;数据库地址	</span><br><span class="line">    username: root		                           &#x2F;&#x2F;用户名</span><br><span class="line">    password:			           &#x2F;&#x2F;密码</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">  servlet:</span><br><span class="line">    context-path: &#x2F;boot2	&#x2F;&#x2F;项目启动后访问的地址</span><br><span class="line">mybatis:</span><br><span class="line">  mapper-locations: classpath:&#x2F;mapper&#x2F;*.xml	&#x2F;&#x2F;mapper映射文件的位置</span><br></pre></td></tr></table></figure>
+<p>5.创建Service和Controller<br>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;Service</span><br><span class="line">package cn.service;</span><br><span class="line"></span><br><span class="line">import cn.Entity.UserBean;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public interface userService &#123;</span><br><span class="line">    public List&lt;UserBean&gt; findAll();</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;ServiceImpl</span><br><span class="line">package cn.service.Impl;</span><br><span class="line"></span><br><span class="line">import cn.Entity.UserBean;</span><br><span class="line">import cn.dao.userDao;</span><br><span class="line">import cn.service.userService;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">import javax.annotation.Resource;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class userServiceImpl implements userService &#123;</span><br><span class="line"></span><br><span class="line">    @Resource</span><br><span class="line">    private userDao userDao;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;UserBean&gt; findAll() &#123;</span><br><span class="line">        return userDao.findAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;Controller</span><br><span class="line">package cn.pro;</span><br><span class="line"></span><br><span class="line">import cn.Entity.UserBean;</span><br><span class="line">import cn.service.userService;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line">import javax.annotation.Resource;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">public class UserController &#123;</span><br><span class="line">  @Resource</span><br><span class="line">    private userService userService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;userlist&quot;)</span><br><span class="line">    public ModelAndView userlist()&#123;</span><br><span class="line">        ModelAndView mv &#x3D; new ModelAndView();</span><br><span class="line">        List&lt;UserBean&gt; ls &#x3D; this.getUserList();</span><br><span class="line">        mv.setViewName(&quot;listUser&quot;);</span><br><span class="line">        mv.addObject(&quot;userlList&quot;,ls);</span><br><span class="line">        return mv;</span><br><span class="line">    &#125;</span><br><span class="line">    public List&lt;UserBean&gt; getUserList()&#123;</span><br><span class="line">        List&lt;UserBean&gt; ls &#x3D; userService.findAll();</span><br><span class="line">        return ls;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6.配置pom.xml文件<br>&nbsp;&nbsp;在maven工程中，XML配置文件建议写在resources目录下，如果Mapper.xml文件写在包下时，Maven在运行时会忽略包下的XML文件，因此需要在pom.xml文件中重新指明资源文件位置，配置如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">&lt;resource&gt;</span><br><span class="line">&lt;directory&gt;src&#x2F;main&#x2F;java&lt;&#x2F;directory&gt;</span><br><span class="line">&lt;includes&gt;</span><br><span class="line">&lt;include&gt;**&#x2F;*.xml&lt;&#x2F;include&gt;</span><br><span class="line">&lt;&#x2F;includes&gt;</span><br><span class="line">&lt;&#x2F;resource&gt;</span><br><span class="line">&lt;resource&gt;</span><br><span class="line">&lt;directory&gt;src&#x2F;main&#x2F;resources&lt;&#x2F;directory&gt;</span><br><span class="line">&lt;&#x2F;resource&gt;</span><br><span class="line">&lt;&#x2F;resources&gt;</span><br><span class="line">&lt;&#x2F;build&gt;</span><br></pre></td></tr></table></figure>
+<p>然后在浏览器中输入” <a href="http://localhost:8080/boot2/userlist" target="_blank" rel="noopener">http://localhost:8080/boot2/userlist</a> “ ,即可看到数据库中的变化</p>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>配置</tag>
+        <tag>Mybatis</tag>
       </tags>
   </entry>
   <entry>
@@ -478,79 +565,6 @@
         <tag>项目搭建</tag>
         <tag>前端</tag>
         <tag>文件上传</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring整合持久层技术</title>
-    <url>/2020/07/09/Spring%E6%95%B4%E5%90%88%E6%8C%81%E4%B9%85%E5%B1%82%E6%8A%80%E6%9C%AF/</url>
-    <content><![CDATA[<p>在springBoot中玩转MyBatis</p>
-<a id="more"></a>
-<p>1.创建项目<br>&nbsp;&nbsp;创建SpringBoot项目,添加MyBatis依赖、数据库驱动依赖以及数据库连接池依赖，代码如下:\</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.1.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;druid&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.9&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.1.0&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>2.创建数据库、表、实体类等<br>数据库和表、实体类以及application.propertie或application.yml中配置的数据库连接信息都与以前一致，如有疑惑，请翻阅之前博客。<br>3.创建数据库访问层(mapper)<br>创建userDao,代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Mapper</span><br><span class="line">public interface userDao &#123;</span><br><span class="line">    public List&lt;UserBean&gt; findAll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>代码解释:<br>•在springBoot启动类中加入注解@MapperScan(basePackages = “cn.dao”)扫描到mapper文件的具体所在包下<br>•@SpringBootApplication(scanBasePackages = {“cn.service”,”cn”})扫描service层<br>4.创建userDao-mapper.xml<br>在resources文件夹中创建mapper文件，写入mapper文件的映射文件(xml),代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC &quot;-&#x2F;&#x2F;mybatis.org&#x2F;&#x2F;DTD Mapper 3.0&#x2F;&#x2F;EN&quot;</span><br><span class="line">        &quot;http:&#x2F;&#x2F;mybatis.org&#x2F;dtd&#x2F;mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">&lt;mapper namespace&#x3D;&quot;cn.dao.userDao&quot;&gt;		&#x2F;&#x2F;指定mapper类所在包</span><br><span class="line">    &lt;select id&#x3D;&quot;findAll&quot; resultType&#x3D;&quot;cn.Entity.UserBean&quot;&gt;</span><br><span class="line">        select * from itrip_user</span><br><span class="line">    &lt;&#x2F;select&gt;</span><br><span class="line">&lt;&#x2F;mapper&gt;</span><br></pre></td></tr></table></figure>
-<p>在application.yml中的配置信息如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">spring:</span><br><span class="line">  thymeleaf:</span><br><span class="line">    prefix: classpath:&#x2F;templates&#x2F;        &#x2F;&#x2F;指定前端页面所在包名</span><br><span class="line">    suffix: .html 		       &#x2F;&#x2F;指定后缀名</span><br><span class="line">  datasource:		       	</span><br><span class="line">    type: com.alibaba.druid.pool.DruidDataSource &#x2F;&#x2F;连接池配置</span><br><span class="line">    driver-class-name: com.mysql.jdbc.Driver         &#x2F;&#x2F;驱动</span><br><span class="line">    url: jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;itrip	           &#x2F;&#x2F;数据库地址	</span><br><span class="line">    username: root		                           &#x2F;&#x2F;用户名</span><br><span class="line">    password:			           &#x2F;&#x2F;密码</span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">  servlet:</span><br><span class="line">    context-path: &#x2F;boot2	&#x2F;&#x2F;项目启动后访问的地址</span><br><span class="line">mybatis:</span><br><span class="line">  mapper-locations: classpath:&#x2F;mapper&#x2F;*.xml	&#x2F;&#x2F;mapper映射文件的位置</span><br></pre></td></tr></table></figure>
-<p>5.创建Service和Controller<br>代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;Service</span><br><span class="line">package cn.service;</span><br><span class="line"></span><br><span class="line">import cn.Entity.UserBean;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public interface userService &#123;</span><br><span class="line">    public List&lt;UserBean&gt; findAll();</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;ServiceImpl</span><br><span class="line">package cn.service.Impl;</span><br><span class="line"></span><br><span class="line">import cn.Entity.UserBean;</span><br><span class="line">import cn.dao.userDao;</span><br><span class="line">import cn.service.userService;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">import javax.annotation.Resource;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class userServiceImpl implements userService &#123;</span><br><span class="line"></span><br><span class="line">    @Resource</span><br><span class="line">    private userDao userDao;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;UserBean&gt; findAll() &#123;</span><br><span class="line">        return userDao.findAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;Controller</span><br><span class="line">package cn.pro;</span><br><span class="line"></span><br><span class="line">import cn.Entity.UserBean;</span><br><span class="line">import cn.service.userService;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.servlet.ModelAndView;</span><br><span class="line"></span><br><span class="line">import javax.annotation.Resource;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">public class UserController &#123;</span><br><span class="line">  @Resource</span><br><span class="line">    private userService userService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;&#x2F;userlist&quot;)</span><br><span class="line">    public ModelAndView userlist()&#123;</span><br><span class="line">        ModelAndView mv &#x3D; new ModelAndView();</span><br><span class="line">        List&lt;UserBean&gt; ls &#x3D; this.getUserList();</span><br><span class="line">        mv.setViewName(&quot;listUser&quot;);</span><br><span class="line">        mv.addObject(&quot;userlList&quot;,ls);</span><br><span class="line">        return mv;</span><br><span class="line">    &#125;</span><br><span class="line">    public List&lt;UserBean&gt; getUserList()&#123;</span><br><span class="line">        List&lt;UserBean&gt; ls &#x3D; userService.findAll();</span><br><span class="line">        return ls;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>6.配置pom.xml文件<br>&nbsp;&nbsp;在maven工程中，XML配置文件建议写在resources目录下，如果Mapper.xml文件写在包下时，Maven在运行时会忽略包下的XML文件，因此需要在pom.xml文件中重新指明资源文件位置，配置如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;build&gt;</span><br><span class="line">&lt;resources&gt;</span><br><span class="line">&lt;resource&gt;</span><br><span class="line">&lt;directory&gt;src&#x2F;main&#x2F;java&lt;&#x2F;directory&gt;</span><br><span class="line">&lt;includes&gt;</span><br><span class="line">&lt;include&gt;**&#x2F;*.xml&lt;&#x2F;include&gt;</span><br><span class="line">&lt;&#x2F;includes&gt;</span><br><span class="line">&lt;&#x2F;resource&gt;</span><br><span class="line">&lt;resource&gt;</span><br><span class="line">&lt;directory&gt;src&#x2F;main&#x2F;resources&lt;&#x2F;directory&gt;</span><br><span class="line">&lt;&#x2F;resource&gt;</span><br><span class="line">&lt;&#x2F;resources&gt;</span><br><span class="line">&lt;&#x2F;build&gt;</span><br></pre></td></tr></table></figure>
-<p>然后在浏览器中输入” <a href="http://localhost:8080/boot2/userlist" target="_blank" rel="noopener">http://localhost:8080/boot2/userlist</a> “ ,即可看到数据库中的变化</p>
-]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>配置</tag>
-        <tag>Mybatis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>整合SpringDataJPA</title>
-    <url>/2020/07/16/%E6%95%B4%E5%90%88SpringDataJPA/</url>
-    <content><![CDATA[<p>JPA</p>
-<a id="more"></a>]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>MySql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringBoot进阶</title>
-    <url>/2020/07/17/SpringBoot%E8%BF%9B%E9%98%B6/</url>
-    <content><![CDATA[<p>SpringBoot的进阶</p>
-<a id="more"></a>
-<h1 id="自定义Starter"><a href="#自定义Starter" class="headerlink" title="自定义Starter"></a>自定义Starter</h1><p>&nbsp;&nbsp;如果SpringBoot自带的入口类不能满足要求,则可以自定义Starter.自定义Starter的步骤如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本次源代码在作者本地D盘下WorkSpace里的mystarter可以找到</span><br></pre></td></tr></table></figure>
-<p>1.创建项目<br>&nbsp;&nbsp;在创建项目是要确定artifactId值.Spring官方的Starter通常被命名为”spring-boot-starter-(名字)”,如”spring-boot-starter-web”.Spring官方建议非官方的Starter命名遵循”(名字)-spring-boot-starter的格式”,如”myxxxx-spring-boot-starter”.<br>2.引入必要的依赖</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;spring-boot-starter-test&lt;&#x2F;artifactId&gt;</span><br><span class="line">       &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>3.自定义Properties类<br>&nbsp;&nbsp;在使用Spring官方的Starter时,可以在application.properties文件中配置参数,以覆盖默认值.在自定义Starter时,也可以根据需要来配置Properties类,以保存配置信息,代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@ConfigurationProperties(prefix &#x3D; &quot;mystarter&quot;)</span><br><span class="line">public class MyStarterProperties &#123;</span><br><span class="line">    private String parameter;</span><br><span class="line"></span><br><span class="line">    public String getParameter() &#123;</span><br><span class="line">        return parameter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setParameter(String parameter) &#123;</span><br><span class="line">        this.parameter &#x3D; parameter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4.定义核心服务类<br>&nbsp;&nbsp;每个Starter都需要有自己的功能,所以需要定义服务类,如:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class MyStarter &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarterProperties myStarterProperties;</span><br><span class="line"></span><br><span class="line">    public MyStarter()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public  MyStarter(MyStarterProperties myStarterProperties)&#123;</span><br><span class="line">        this.myStarterProperties &#x3D; myStarterProperties;</span><br><span class="line">    &#125;</span><br><span class="line">    public String print()&#123;</span><br><span class="line">        System.out.println(&quot;参数:&quot;+myStarterProperties.getParameter());</span><br><span class="line">        String s &#x3D; myStarterProperties.getParameter();</span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>5.定义自动配置类<br>&nbsp;&nbsp;每个Starter一般至少有一个自动配置类,命名规则为”名字+AutoConfiguration”,如”MyStarterServiceAutoConfiguration”.配置方法如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableConfigurationProperties(MyStarterProperties.class)</span><br><span class="line">@ConditionalOnClass(MyStarter.class)</span><br><span class="line">@ConditionalOnProperty(prefix &#x3D; &quot;mystarter&quot;,value &#x3D; &quot;enable&quot;,matchIfMissing &#x3D; true)</span><br><span class="line">public class MyStarterServiceAutoConfiguration &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarterProperties myStarterProperties;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @ConditionalOnMissingBean(MyStarter.class)</span><br><span class="line">    public MyStarter MyStarterService()&#123;</span><br><span class="line">        MyStarter myStarter &#x3D; new MyStarter(myStarterProperties);</span><br><span class="line">        return myStarter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&nbsp;&nbsp;最后,在resources文件夹下新建目录META-INF,在目录中新建spring.factories文件,并且在spring.factories中配置AutoConfiguration,加入以下代码:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration&#x3D;org.example.MyStarterServiceAutoConfiguration</span><br></pre></td></tr></table></figure>
-<p>org.example为项目名,具体按照实际代码<br>6.打包发布<br>&nbsp;&nbsp;在完成上面的配置后,打包生成JAR文件,然后就可以像使用官方Starter那样使用了.如果不发布到Maven中心仓库,则需要用户手动添加依赖.<br>7.创建用于测试Starter的项目<br>&nbsp;&nbsp;在创建新项目后,如果要添加自定义的Starter依赖,则不能用添加官方Starter的方法,因为此时还未将Starter发布到Maven中心仓库,只能通过开发工具导入此依赖JAR文件(在IDEA中,通过单击菜单栏的”FILE→ProjectStructure→Modules→Dependencies”,然后单机”+”号,选择”JARs or directories…”选项添加依赖).<br>&nbsp;&nbsp;然后,配置application.properties文件,加入以下参数:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mystarter.parameter&#x3D;admin</span><br></pre></td></tr></table></figure>
-<p>8.使用Starter<br>&nbsp;&nbsp;在需要使用的地方注入依赖即可,具体使用见以下代码:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">@SpringBootTest(classes &#x3D; App.class)</span><br><span class="line">public class AppTest </span><br><span class="line">&#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private MyStarter myStarter;</span><br><span class="line">    @Test</span><br><span class="line">    public void shouldAnswerWithTrue()</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(myStarter.print());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&nbsp;&nbsp;运行上面的单元测试,则输出以下结果:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参数:admin</span><br><span class="line">admin</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>SpringBoot</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
-        <tag>配置</tag>
-        <tag>注解</tag>
       </tags>
   </entry>
 </search>
