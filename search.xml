@@ -577,4 +577,19 @@
         <tag>文件上传</tag>
       </tags>
   </entry>
+  <entry>
+    <title>构建RESTful服务</title>
+    <url>/2020/07/23/%E6%9E%84%E5%BB%BARESTful%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<p>RESTful服务</p>
+<a id="more"></a>
+]]></content>
+      <categories>
+        <category>SpringBoot</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+        <tag>REST</tag>
+        <tag>Swagger</tag>
+      </tags>
+  </entry>
 </search>

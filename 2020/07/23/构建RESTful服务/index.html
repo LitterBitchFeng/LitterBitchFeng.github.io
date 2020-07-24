@@ -20,21 +20,22 @@
     var CONFIG = {"hostname":"litterbitchfeng.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="JPA">
+  <meta name="description" content="RESTful服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="整合SpringDataJPA">
-<meta property="og:url" content="https://litterbitchfeng.github.io/2020/07/16/%E6%95%B4%E5%90%88SpringDataJPA/index.html">
+<meta property="og:title" content="构建RESTful服务">
+<meta property="og:url" content="https://litterbitchfeng.github.io/2020/07/23/%E6%9E%84%E5%BB%BARESTful%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="键人冯小笔记">
-<meta property="og:description" content="JPA">
+<meta property="og:description" content="RESTful服务">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-16T06:46:19.000Z">
-<meta property="article:modified_time" content="2020-07-21T03:37:00.487Z">
+<meta property="article:published_time" content="2020-07-23T00:12:12.000Z">
+<meta property="article:modified_time" content="2020-07-23T00:13:52.584Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="SpringBoot">
-<meta property="article:tag" content="MySql">
+<meta property="article:tag" content="REST">
+<meta property="article:tag" content="Swagger">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://litterbitchfeng.github.io/2020/07/16/%E6%95%B4%E5%90%88SpringDataJPA/">
+<link rel="canonical" href="https://litterbitchfeng.github.io/2020/07/23/%E6%9E%84%E5%BB%BARESTful%E6%9C%8D%E5%8A%A1/">
 
 
 <script id="page-configurations">
@@ -47,7 +48,7 @@
   };
 </script>
 
-  <title>整合SpringDataJPA | 键人冯小笔记</title>
+  <title>构建RESTful服务 | 键人冯小笔记</title>
   
 
 
@@ -192,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://litterbitchfeng.github.io/2020/07/16/%E6%95%B4%E5%90%88SpringDataJPA/">
+    <link itemprop="mainEntityOfPage" href="https://litterbitchfeng.github.io/2020/07/23/%E6%9E%84%E5%BB%BARESTful%E6%9C%8D%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          整合SpringDataJPA
+          构建RESTful服务
         </h1>
 
         <div class="post-meta">
@@ -214,16 +215,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-07-16 14:46:19" itemprop="dateCreated datePublished" datetime="2020-07-16T14:46:19+08:00">2020-07-16</time>
+              <time title="创建时间：2020-07-23 08:12:12 / 修改时间：08:13:52" itemprop="dateCreated datePublished" datetime="2020-07-23T08:12:12+08:00">2020-07-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-21 11:37:00" itemprop="dateModified" datetime="2020-07-21T11:37:00+08:00">2020-07-21</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -245,21 +240,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>JPA</p>
+        <p>RESTful服务</p>
 <a id="more"></a>
-<p>1.导入依赖<br>&nbsp;&nbsp;创建SpringBoot项目,添加MySql和SpringData JPA的依赖,代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-web&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;5.1.1&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.alibaba&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;druid&lt;&#x2F;artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.1.9&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-<p>2.数据库配置<br>&nbsp;&nbsp;在application.yml中配置数据库基本信息以及JPA相关配置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">datasource:</span><br><span class="line">  type: com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">  driver-class-name: com.mysql.jdbc.Driver</span><br><span class="line">  url: jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;itrip?useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&amp;serverTimezone&#x3D;UTC&amp;useSSL&#x3D;true</span><br><span class="line">  username: root</span><br><span class="line">  password:</span><br><span class="line">jpa:</span><br><span class="line">  show-sql: true</span><br><span class="line">  database: mysql</span><br><span class="line">  hibernate:</span><br><span class="line">    ddl-auto: update</span><br><span class="line">  properties:</span><br><span class="line">    hibernate:</span><br><span class="line">      dialect: org.hibernate.dialect.MySQL57Dialect</span><br></pre></td></tr></table></figure>
-<p>&nbsp;&nbsp;这里的配置信息主要分为两大类.第1<del>6行时数据库基本信息配置,第7</del>14行时JPA相关配置.其中,第8行表示JPA对应的数据库是MySQL,第11行表示在项目启动时根据实体类更新数据库中的表(其他可选值有create、create-drop、validate、no),第14行则表示使用的数据库方言时MySQL57Dialect.<br>3.创建实体类<br>&nbsp;&nbsp;创建Book实体类,代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Entity(name &#x3D; &quot;book&quot;)&#x2F;&#x2F;表示该类是一个实体类,在项目启动时会根据该类自动生成一张表,表的名称即@Entity注解中name的值,如果不配置name,默认表名为类名.</span><br><span class="line">@Data</span><br><span class="line">public class koob &#123;</span><br><span class="line">    @Id&#x2F;&#x2F;所有的实体类都要有主键,@Id注解表示该属性是一个主键</span><br><span class="line">    @GeneratedValue(strategy &#x3D; GenerationType.IDENTITY)&#x2F;&#x2F;@GenerateValue注解表示主键自动生成,strategy则表示主键的生成策略.</span><br><span class="line">    private Integer id;</span><br><span class="line">    @Column(name &#x3D; &quot;book_name&quot;,nullable &#x3D; false)&#x2F;&#x2F;默认情况下,生成的表中字段的名称就是实体类中属性的名称.通过@Column注解可以定制生成的字段的属性,name表示该属性对应的数据表中字段的名称,nullable表示该字段非空.</span><br><span class="line">    private String name;</span><br><span class="line">    private String author;</span><br><span class="line">    private Float price;</span><br><span class="line"></span><br><span class="line">    @Transient&#x2F;&#x2F;该注解表示在生成数据库中的表时,该属性被忽略,即不生成对应的字段.</span><br><span class="line">    private String description;</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4.创建BookDao接口<br>&nbsp;&nbsp;创建BookDao接口,继承JpaRepository,代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Repository</span><br><span class="line">public interface KoobDao extends JpaRepository&lt;koob,Integer&gt; &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>5.创建BookService<br>&nbsp;&nbsp;创建BookService,代码如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class KoobService &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private KoobDao koobDao;</span><br><span class="line">    public void addBook(koob koob)&#123;</span><br><span class="line">        koobDao.save(koob);</span><br><span class="line">    &#125;</span><br><span class="line">    public void delBook(Integer id)&#123;</span><br><span class="line">        koobDao.deleteById(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>6.创建BookController<br>&nbsp;&nbsp;创建BookController,实现对数据的测试:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class KoobController &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    private KoobService koobService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value &#x3D; &quot;&#x2F;findAll&quot;)</span><br><span class="line">    public ModelAndView findAll()&#123;</span><br><span class="line">        ModelAndView m &#x3D; new ModelAndView();</span><br><span class="line">        koob k &#x3D; new koob();</span><br><span class="line">        k.setAuthor(&quot;冯世昊&quot;);</span><br><span class="line">        k.setName(&quot;爬1&quot;);</span><br><span class="line">        k.setPrice(12f);</span><br><span class="line">        koobService.addBook(k);</span><br><span class="line">        m.setViewName(&quot;boook&quot;);</span><br><span class="line">        return m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>8.测试<br>&nbsp;&nbsp;访问 “<a href="http://localhost:8080/boot2/findAll" target="_blank" rel="noopener">http://localhost:8080/boot2/findAll</a> “接口.</p>
 
     </div>
 
@@ -270,7 +252,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
-              <a href="/tags/MySql/" rel="tag"># MySql</a>
+              <a href="/tags/REST/" rel="tag"># REST</a>
+              <a href="/tags/Swagger/" rel="tag"># Swagger</a>
           </div>
 
         
@@ -279,13 +262,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/09/Spring%E6%95%B4%E5%90%88%E6%8C%81%E4%B9%85%E5%B1%82%E6%8A%80%E6%9C%AF/" rel="prev" title="Spring整合持久层技术">
-      <i class="fa fa-chevron-left"></i> Spring整合持久层技术
+    <a href="/2020/07/17/SpringBoot%E8%BF%9B%E9%98%B6/" rel="prev" title="SpringBoot进阶">
+      <i class="fa fa-chevron-left"></i> SpringBoot进阶
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/17/SpringBoot%E8%BF%9B%E9%98%B6/" rel="next" title="SpringBoot进阶">
-      SpringBoot进阶 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
