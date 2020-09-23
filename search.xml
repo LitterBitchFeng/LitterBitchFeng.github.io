@@ -764,4 +764,23 @@ SpringBoot整合AMQP<br>
         <tag>项目搭建</tag>
       </tags>
   </entry>
+  <entry>
+    <title>面试问题</title>
+    <url>/2020/09/23/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>面试中常见的问题以及总结</p>
+<a id="more"></a>
+<h1 id="项目开发流程"><a href="#项目开发流程" class="headerlink" title="项目开发流程"></a>项目开发流程</h1><p>针对项目型任务,简单的流程如下</p>
+<h2 id="了解需求"><a href="#了解需求" class="headerlink" title="了解需求"></a>了解需求</h2><pre><code>跟客户沟通，充分了解对方的需求，然后对需求进行过滤，最后整体成需求文档</code></pre><h2 id="需求分析会议"><a href="#需求分析会议" class="headerlink" title="需求分析会议"></a>需求分析会议</h2><pre><code>也就是项目启动会议之后要做的事情，对拿来的需求进行讨论，怎么做满足需求。
+主要对需求进行全面的梳理，让开发，产品，项目都熟悉整个需求。</code></pre><h2 id="确认开发任务"><a href="#确认开发任务" class="headerlink" title="确认开发任务"></a>确认开发任务</h2><pre><code>根据敏捷开发法则，需求变成一个一个功能点之后就是安排开发任务了。
+根据团队现有的资源合理分配任务，和时间节点。在这在多项目交叉的时候显得尤为重要。</code></pre><h2 id="推进开发进度"><a href="#推进开发进度" class="headerlink" title="推进开发进度"></a>推进开发进度</h2><pre><code>在实际过程中，要注意节奏的把控，功能点在某一段时间点内完成或者延迟都是需要的。</code></pre><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code>每一个功能点完成之后进行单元测试。</code></pre><h2 id="试点"><a href="#试点" class="headerlink" title="试点"></a>试点</h2><pre><code>试点单位进行试用，然后解决问题。</code></pre><h2 id="交付"><a href="#交付" class="headerlink" title="交付"></a>交付</h2><h2 id="运维"><a href="#运维" class="headerlink" title="运维"></a>运维</h2><pre><code>与客户商讨维护计划,定时对发布后的产品做错误排查</code></pre><hr>
+<h1 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h1>]]></content>
+      <categories>
+        <category>SpringBoot</category>
+        <category>SpringCloud</category>
+        <category>SSM</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
 </search>
